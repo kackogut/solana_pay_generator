@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sol_pay_gen/feature/input/bloc/parameters_input_cubit.dart';
 
 import 'feature/input/parameters_input_screen.dart';
 
@@ -18,7 +20,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: ParametersInputScreen(),
+      home: BlocProvider(
+        create: (_) => ParametersInputCubit(),
+        child: ParametersInputScreen(),
+      )
     );
   }
 }
