@@ -9,13 +9,11 @@ class ParametersInputScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: Text("Solana Pay QR Generator"),
-        ),
-        body: BlocBuilder<ParametersInputCubit, ParametersInputState>(
-          builder: (context, state) => InputBody(state: state)
-        )
-      );
+      appBar: AppBar(
+        title: const Text("Solana Pay QR Generator"),
+      ),
+      body: BlocBuilder<ParametersInputCubit, ParametersInputState>(
+          builder: (context, state) => InputBody(state: state)));
 }
 
 class InputBody extends StatelessWidget {
@@ -26,15 +24,42 @@ class InputBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.max,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        ListView(
+          shrinkWrap: true,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: TextField(
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Receive wallet address',
+                ),
+                onChanged: (address) => context
+                    .read<ParametersInputCubit>()
+                    .onAddressChange(address),
+              ),
+            )
+          ],
+        ),
+        const Spacer(),
         Padding(
-          padding: EdgeInsets.all(24.0),
-          child: TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Receive wallet address',
+          padding: const EdgeInsets.all(24.0),
+          child: MaterialButton(
+            onPressed: () {},
+            color: Colors.blueAccent,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
             ),
-            onChanged: (address) => context.read<ParametersInputCubit>().onAddressChange(address),
+            height: 56.0,
+            child: const Text(
+                "Let's go",
+                style: TextStyle(
+                  color: Colors.white
+                ),
+            ),
           ),
         )
       ],
