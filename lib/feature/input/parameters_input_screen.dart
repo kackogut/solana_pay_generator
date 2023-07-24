@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sol_pay_gen/feature/input/bloc/parameters_input_cubit.dart';
+import 'package:sol_pay_gen/feature/qr/bloc/qr_generator_cubit.dart';
+import 'package:sol_pay_gen/feature/qr/bloc/qr_generator_state.dart';
 
+import '../qr/qr_code_dialog.dart';
 import 'bloc/parameters_input_state.dart';
 
 class ParametersInputScreen extends StatelessWidget {
@@ -9,11 +12,21 @@ class ParametersInputScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-      appBar: AppBar(
-        title: const Text("Solana Pay QR Generator"),
-      ),
-      body: BlocBuilder<ParametersInputCubit, ParametersInputState>(
-          builder: (context, state) => InputBody(state: state)));
+        appBar: AppBar(
+          title: const Text("Solana Pay QR Generator"),
+        ),
+        body: BlocListener<QrGeneratorCubit, QrGeneratorState>(
+          listener: (context, state) {
+            switch (state) {
+              case Empty():{}
+              case QrCode():qrCodeDialogBuilder(context, state.data);
+            }
+          },
+          child: BlocBuilder<ParametersInputCubit, ParametersInputState>(
+            builder: (context, state) => InputBody(state: state),
+          ),
+        ),
+      );
 }
 
 class InputBody extends StatelessWidget {
@@ -48,17 +61,15 @@ class InputBody extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(24.0),
           child: MaterialButton(
-            onPressed: () {},
+            onPressed: () => context.read<QrGeneratorCubit>().onGenerate(),
             color: Colors.blueAccent,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16.0),
             ),
             height: 56.0,
             child: const Text(
-                "Let's go",
-                style: TextStyle(
-                  color: Colors.white
-                ),
+              "Let's go",
+              style: TextStyle(color: Colors.white),
             ),
           ),
         )
