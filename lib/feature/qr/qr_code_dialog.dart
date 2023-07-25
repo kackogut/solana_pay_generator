@@ -24,7 +24,6 @@ class _QrCode extends StatelessWidget {
       padding: const EdgeInsets.all(24),
       child: PrettyQr(
         // image: AssetImage('images/twitter.png'),
-        typeNumber: 3,
         size: 200,
         data: _data,
         errorCorrectLevel: QrErrorCorrectLevel.M,

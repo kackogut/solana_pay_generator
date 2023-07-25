@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sol_pay_gen/data/solana_pay_request.dart';
 import 'package:sol_pay_gen/domain/generate_transfer_request_qr_use_case.dart';
 import 'package:sol_pay_gen/feature/input/bloc/parameters_input_state.dart';
 import 'package:sol_pay_gen/feature/qr/bloc/qr_generator_state.dart';
@@ -18,7 +19,9 @@ class QrGeneratorCubit extends Cubit<QrGeneratorState> {
 
   void onGenerate() async {
     ParametersInputState inputState = _parametersInputCubit.state;
-    String qrCode = _generateTransferRequestQrUseCase.execute(inputState.address);
+    SolanaPayRequest request = SolanaPayRequest(address: inputState.address);
+
+    String qrCode = _generateTransferRequestQrUseCase.execute(request);
 
     emit(QrCode(qrCode));
   }

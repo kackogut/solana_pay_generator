@@ -4,6 +4,7 @@ import 'package:sol_pay_gen/feature/input/bloc/parameters_input_cubit.dart';
 import 'package:sol_pay_gen/feature/qr/bloc/qr_generator_cubit.dart';
 import 'package:sol_pay_gen/feature/qr/bloc/qr_generator_state.dart';
 
+import '../../design/input/base_input.dart';
 import '../qr/qr_code_dialog.dart';
 import 'bloc/parameters_input_state.dart';
 
@@ -18,8 +19,10 @@ class ParametersInputScreen extends StatelessWidget {
         body: BlocListener<QrGeneratorCubit, QrGeneratorState>(
           listener: (context, state) {
             switch (state) {
-              case Empty():{}
-              case QrCode():qrCodeDialogBuilder(context, state.data);
+              case Empty():
+                {}
+              case QrCode():
+                qrCodeDialogBuilder(context, state.data);
             }
           },
           child: BlocBuilder<ParametersInputCubit, ParametersInputState>(
@@ -40,22 +43,49 @@ class InputBody extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        ListView(
-          shrinkWrap: true,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: TextField(
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Receive wallet address',
-                ),
+        Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: ListView(
+            shrinkWrap: true,
+            children: [
+              BaseInput(
+                labelText: 'Receive wallet address',
                 onChanged: (address) => context
                     .read<ParametersInputCubit>()
                     .onAddressChange(address),
               ),
-            )
-          ],
+
+              const Padding(padding: EdgeInsets.only(top: 16.0)),
+
+              BaseInput(
+                labelText: 'Amount',
+                keyboardType: TextInputType.number,
+                onChanged: (address) => context
+                    .read<ParametersInputCubit>()
+                    .onAmountChange(address),
+              ),
+
+              const Padding(padding: EdgeInsets.only(top: 16.0)),
+
+              BaseInput(
+                labelText: 'Reference',
+                keyboardType: TextInputType.number,
+                onChanged: (address) => context
+                    .read<ParametersInputCubit>()
+                    .onReferenceChange(address),
+              ),
+
+              const Padding(padding: EdgeInsets.only(top: 16.0)),
+
+              BaseInput(
+                labelText: 'Memo',
+                keyboardType: TextInputType.number,
+                onChanged: (address) => context
+                    .read<ParametersInputCubit>()
+                    .onReferenceChange(address),
+              ),
+            ],
+          ),
         ),
         const Spacer(),
         Padding(
