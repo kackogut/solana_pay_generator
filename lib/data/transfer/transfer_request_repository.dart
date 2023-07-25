@@ -1,6 +1,3 @@
-import 'package:solana_pay/solana_pay.dart';
-import 'package:solana_pay/src/model/transaction_request.dart';
-import 'package:solana_pay/src/model/transfer_request.dart';
 import '../../util/constants.dart';
 import '../solana_pay_request.dart';
 
@@ -13,15 +10,12 @@ class DefaultTransferRequestRepository extends TransferRequestRepository {
   String getLink(SolanaPayRequest solanaPayRequest) {
     Map<String, dynamic> queryParameters = _getQueryParameters(solanaPayRequest);
 
-    encodeTransferRequestURL()
-    String url = Uri(
+    return Uri(
       scheme: SOLANA_PROTOCOL,
       path: solanaPayRequest.address,
       queryParameters: queryParameters,
     )
         .toString();
-
-    return url;
   }
 
   Map<String, dynamic> _getQueryParameters(SolanaPayRequest solanaPayRequest) {

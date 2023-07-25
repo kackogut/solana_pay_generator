@@ -1,5 +1,12 @@
 class SolanaPayRequest {
-  SolanaPayRequest({required this.address});
+  SolanaPayRequest({
+    required this.address,
+    this.label,
+    this.message,
+    this.amount,
+    this.reference,
+    this.memo,
+  });
 
   String address;
   String? label;

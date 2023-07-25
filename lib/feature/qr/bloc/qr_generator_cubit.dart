@@ -19,7 +19,14 @@ class QrGeneratorCubit extends Cubit<QrGeneratorState> {
 
   void onGenerate() async {
     ParametersInputState inputState = _parametersInputCubit.state;
-    SolanaPayRequest request = SolanaPayRequest(address: inputState.address);
+    SolanaPayRequest request = SolanaPayRequest(
+      address: inputState.address,
+      label: inputState.label,
+      message: inputState.message,
+      amount: inputState.amount,
+      reference: inputState.reference,
+      memo: inputState.memo,
+    );
 
     String qrCode = _generateTransferRequestQrUseCase.execute(request);
 

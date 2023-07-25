@@ -9,6 +9,8 @@ class ParametersInputCubit extends Cubit<ParametersInputState> {
             amount: null,
             reference: null,
             memo: null,
+            message: null,
+            label: null,
           ),
         );
 
@@ -18,6 +20,14 @@ class ParametersInputCubit extends Cubit<ParametersInputState> {
 
   void onAmountChange(String amount) {
     emit(state.copyWith(amount: amount));
+  }
+
+  void onLabelChange(String label) {
+    emit(state.copyWith(label: label));
+  }
+
+  void onMessageChange(String message) {
+    emit(state.copyWith(message: message));
   }
 
   void onReferenceChange(String reference) {

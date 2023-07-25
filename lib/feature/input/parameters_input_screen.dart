@@ -68,6 +68,26 @@ class InputBody extends StatelessWidget {
               const Padding(padding: EdgeInsets.only(top: 16.0)),
 
               BaseInput(
+                labelText: 'Label',
+                keyboardType: TextInputType.number,
+                onChanged: (text) => context
+                    .read<ParametersInputCubit>()
+                    .onLabelChange(text),
+              ),
+
+              const Padding(padding: EdgeInsets.only(top: 16.0)),
+
+              BaseInput(
+                labelText: 'Message',
+                keyboardType: TextInputType.number,
+                onChanged: (text) => context
+                    .read<ParametersInputCubit>()
+                    .onMessageChange(text),
+              ),
+
+              const Padding(padding: EdgeInsets.only(top: 16.0)),
+
+              BaseInput(
                 labelText: 'Reference',
                 keyboardType: TextInputType.number,
                 onChanged: (address) => context
