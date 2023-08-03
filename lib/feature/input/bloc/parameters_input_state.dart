@@ -7,6 +7,7 @@ class ParametersInputState extends Equatable {
   final String? label;
   final String? message;
   final String? memo;
+  final String? splTokenAddress;
 
   const ParametersInputState({
     required this.address,
@@ -15,6 +16,7 @@ class ParametersInputState extends Equatable {
     required this.label,
     required this.message,
     required this.memo,
+    required this.splTokenAddress
   });
 
   @override
@@ -25,6 +27,7 @@ class ParametersInputState extends Equatable {
         label,
         message,
         memo,
+    splTokenAddress,
       ];
 
   ParametersInputState copyWith({
@@ -34,6 +37,7 @@ class ParametersInputState extends Equatable {
     String? message,
     String? reference,
     String? memo,
+    String? splTokenAddress,
   }) =>
       ParametersInputState(
         address: address ?? this.address,
@@ -42,5 +46,6 @@ class ParametersInputState extends Equatable {
         message: message ?? this.message,
         reference: reference ?? this.reference,
         memo: memo ?? this.memo,
+        splTokenAddress: splTokenAddress ?? this.splTokenAddress,
       );
 }
