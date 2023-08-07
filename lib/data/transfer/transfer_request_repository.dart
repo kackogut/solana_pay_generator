@@ -25,7 +25,7 @@ class DefaultTransferRequestRepository extends TransferRequestRepository {
       queryParameters["amount"] = solanaPayRequest.amount!;
     }
     if (solanaPayRequest.splToken != null) {
-      queryParameters["splToken"] = solanaPayRequest.splToken!;
+      queryParameters["spl-token"] = solanaPayRequest.splToken!;
     }
     if (solanaPayRequest.reference != null) {
       queryParameters["reference"] = solanaPayRequest.reference;
