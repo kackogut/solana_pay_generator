@@ -39,4 +39,8 @@ class ParametersInputCubit extends Cubit<ParametersInputState> {
   void onSplTokenChange(String token) {
     emit(state.copyWith(splTokenAddress: token));
   }
+
+  void onMemoChange(String memo) {
+    emit(state.copyWith(memo: memo));
+  }
 }

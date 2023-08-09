@@ -84,9 +84,9 @@ class InputBody extends StatelessWidget {
               const Padding(padding: EdgeInsets.only(top: 16.0)),
               BaseInput(
                 labelText: 'Memo',
-                onChanged: (address) => context
+                onChanged: (memo) => context
                     .read<ParametersInputCubit>()
-                    .onReferenceChange(address),
+                    .onMemoChange(memo),
               ),
               const Padding(padding: EdgeInsets.only(top: 16.0)),
 
