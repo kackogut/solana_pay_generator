@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sol_pay_gen/data/token/spl_tokens.dart';
 import 'package:sol_pay_gen/feature/input/bloc/parameters_input_cubit.dart';
 import 'package:sol_pay_gen/feature/qr/bloc/qr_generator_cubit.dart';
 import 'package:sol_pay_gen/feature/qr/bloc/qr_generator_state.dart';
@@ -38,8 +39,7 @@ class InputBody extends StatelessWidget {
   final ParametersInputState state;
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
+  Widget build(BuildContext context) => Column(
       mainAxisSize: MainAxisSize.max,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -54,9 +54,7 @@ class InputBody extends StatelessWidget {
                     .read<ParametersInputCubit>()
                     .onAddressChange(address),
               ),
-
               const Padding(padding: EdgeInsets.only(top: 16.0)),
-
               BaseInput(
                 labelText: 'Amount',
                 keyboardType: TextInputType.number,
@@ -64,45 +62,39 @@ class InputBody extends StatelessWidget {
                     .read<ParametersInputCubit>()
                     .onAmountChange(address),
               ),
-
               const Padding(padding: EdgeInsets.only(top: 16.0)),
-
               BaseInput(
                 labelText: 'Label',
-                keyboardType: TextInputType.number,
-                onChanged: (text) => context
-                    .read<ParametersInputCubit>()
-                    .onLabelChange(text),
+                onChanged: (text) =>
+                    context.read<ParametersInputCubit>().onLabelChange(text),
               ),
-
               const Padding(padding: EdgeInsets.only(top: 16.0)),
-
               BaseInput(
                 labelText: 'Message',
-                keyboardType: TextInputType.number,
-                onChanged: (text) => context
-                    .read<ParametersInputCubit>()
-                    .onMessageChange(text),
+                onChanged: (text) =>
+                    context.read<ParametersInputCubit>().onMessageChange(text),
               ),
-
               const Padding(padding: EdgeInsets.only(top: 16.0)),
-
               BaseInput(
                 labelText: 'Reference',
-                keyboardType: TextInputType.number,
                 onChanged: (address) => context
                     .read<ParametersInputCubit>()
                     .onReferenceChange(address),
               ),
-
+              const Padding(padding: EdgeInsets.only(top: 16.0)),
+              BaseInput(
+                labelText: 'Memo',
+                onChanged: (memo) => context
+                    .read<ParametersInputCubit>()
+                    .onMemoChange(memo),
+              ),
               const Padding(padding: EdgeInsets.only(top: 16.0)),
 
               BaseInput(
-                labelText: 'Memo',
-                keyboardType: TextInputType.number,
-                onChanged: (address) => context
+                labelText: 'SPL token',
+                onChanged: (token) => context
                     .read<ParametersInputCubit>()
-                    .onReferenceChange(address),
+                    .onSplTokenChange(token),
               ),
             ],
           ),
@@ -125,5 +117,4 @@ class InputBody extends StatelessWidget {
         )
       ],
     );
-  }
 }

@@ -6,6 +6,7 @@ class SolanaPayRequest {
     this.amount,
     this.reference,
     this.memo,
+    this.splToken,
   });
 
   String address;

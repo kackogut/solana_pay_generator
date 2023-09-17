@@ -21,22 +21,22 @@ class DefaultTransferRequestRepository extends TransferRequestRepository {
   Map<String, dynamic> _getQueryParameters(SolanaPayRequest solanaPayRequest) {
     Map<String, dynamic> queryParameters = {};
 
-    if (solanaPayRequest.amount != null) {
+    if (solanaPayRequest.amount?.isNotEmpty == true) {
       queryParameters["amount"] = solanaPayRequest.amount!;
     }
-    if (solanaPayRequest.splToken != null) {
-      queryParameters["splToken"] = solanaPayRequest.splToken!;
+    if (solanaPayRequest.splToken?.isNotEmpty == true) {
+      queryParameters["spl-token"] = solanaPayRequest.splToken!;
     }
-    if (solanaPayRequest.reference != null) {
+    if (solanaPayRequest.reference?.isNotEmpty == true) {
       queryParameters["reference"] = solanaPayRequest.reference;
     }
-    if (solanaPayRequest.label != null) {
+    if (solanaPayRequest.label?.isNotEmpty == true) {
       queryParameters["label"] = solanaPayRequest.label;
     }
-    if (solanaPayRequest.message != null) {
+    if (solanaPayRequest.message?.isNotEmpty == true) {
       queryParameters["message"] = solanaPayRequest.message;
     }
-    if (solanaPayRequest.memo != null) {
+    if (solanaPayRequest.memo?.isNotEmpty == true) {
       queryParameters["memo"] = solanaPayRequest.memo;
     }
 
