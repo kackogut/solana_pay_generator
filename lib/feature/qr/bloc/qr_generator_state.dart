@@ -3,7 +3,6 @@ import 'package:equatable/equatable.dart';
 sealed class QrGeneratorState extends Equatable {}
 
 final class Empty extends QrGeneratorState {
-
   @override
   List<Object?> get props => [];
 }

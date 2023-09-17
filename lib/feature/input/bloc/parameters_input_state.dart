@@ -9,15 +9,14 @@ class ParametersInputState extends Equatable {
   final String? memo;
   final String? splTokenAddress;
 
-  const ParametersInputState({
-    required this.address,
-    required this.amount,
-    required this.reference,
-    required this.label,
-    required this.message,
-    required this.memo,
-    required this.splTokenAddress
-  });
+  const ParametersInputState(
+      {required this.address,
+      required this.amount,
+      required this.reference,
+      required this.label,
+      required this.message,
+      required this.memo,
+      required this.splTokenAddress});
 
   @override
   List<Object?> get props => [
@@ -27,7 +26,7 @@ class ParametersInputState extends Equatable {
         label,
         message,
         memo,
-    splTokenAddress,
+        splTokenAddress,
       ];
 
   ParametersInputState copyWith({
