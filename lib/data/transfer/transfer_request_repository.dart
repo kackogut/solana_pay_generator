@@ -11,7 +11,7 @@ class DefaultTransferRequestRepository extends TransferRequestRepository {
     Map<String, dynamic> queryParameters = _getQueryParameters(solanaPayRequest);
 
     return Uri(
-      scheme: SOLANA_PROTOCOL,
+      scheme: solanaProtocol,
       path: solanaPayRequest.address,
       queryParameters: queryParameters,
     )

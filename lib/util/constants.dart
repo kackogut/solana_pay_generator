@@ -1,1 +1,1 @@
-const SOLANA_PROTOCOL = 'solana';
+const solanaProtocol = 'solana';
