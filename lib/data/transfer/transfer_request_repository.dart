@@ -8,14 +8,14 @@ abstract class TransferRequestRepository {
 class DefaultTransferRequestRepository extends TransferRequestRepository {
   @override
   String getLink(SolanaPayRequest solanaPayRequest) {
-    Map<String, dynamic> queryParameters = _getQueryParameters(solanaPayRequest);
+    Map<String, dynamic> queryParameters =
+        _getQueryParameters(solanaPayRequest);
 
     return Uri(
-      scheme: SOLANA_PROTOCOL,
+      scheme: solanaProtocol,
       path: solanaPayRequest.address,
       queryParameters: queryParameters,
-    )
-        .toString();
+    ).toString();
   }
 
   Map<String, dynamic> _getQueryParameters(SolanaPayRequest solanaPayRequest) {
