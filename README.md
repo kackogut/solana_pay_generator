@@ -1,16 +1,15 @@
-# sol_pay_gen
+# Solana Pay QR generator
 
 QR code generator for Solana Pay
 
-## Getting Started
+## Checklist
 
-This project is a starting point for a Flutter application.
+- ✅ Validation
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- 🚧 Download QR code
+- 🚧 SPL token picker
+- 🚧 Upload custom icon
+- 🚧 Adaptive layout
+- 🚧 How it works page
+- 🚧 Transaction request
+- 🚧 Transactions history

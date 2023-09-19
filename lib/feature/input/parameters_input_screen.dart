@@ -49,6 +49,7 @@ class InputBody extends StatelessWidget {
               children: [
                 BaseInput(
                   labelText: 'Receive wallet address',
+                  error: state.address.error?.text,
                   onChanged: (address) => context
                       .read<ParametersInputCubit>()
                       .onAddressChange(address),
@@ -57,6 +58,7 @@ class InputBody extends StatelessWidget {
                 BaseInput(
                   labelText: 'Amount',
                   keyboardType: TextInputType.number,
+                  error: state.amount.error?.text,
                   onChanged: (address) => context
                       .read<ParametersInputCubit>()
                       .onAmountChange(address),
@@ -77,6 +79,7 @@ class InputBody extends StatelessWidget {
                 const Padding(padding: EdgeInsets.only(top: 16.0)),
                 BaseInput(
                   labelText: 'Reference',
+                  error: state.reference.error?.text,
                   onChanged: (address) => context
                       .read<ParametersInputCubit>()
                       .onReferenceChange(address),
@@ -101,7 +104,10 @@ class InputBody extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(24.0),
             child: MaterialButton(
-              onPressed: () => context.read<QrGeneratorCubit>().onGenerate(),
+              onPressed: () {
+                context.read<ParametersInputCubit>().onValidate();
+                context.read<QrGeneratorCubit>().onGenerate();
+              },
               color: Colors.blueAccent,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16.0),
