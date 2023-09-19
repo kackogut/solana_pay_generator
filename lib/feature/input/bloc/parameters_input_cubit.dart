@@ -1,12 +1,18 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sol_pay_gen/data/base/text_value.dart';
 import 'package:sol_pay_gen/feature/input/bloc/parameters_input_state.dart';
 
+import '../../../validator/number_validator.dart';
+
 class ParametersInputCubit extends Cubit<ParametersInputState> {
-  ParametersInputCubit()
-      : super(
-          const ParametersInputState(
+  final NumberValidator _numberValidator;
+
+  ParametersInputCubit(
+    this._numberValidator,
+  ) : super(
+          ParametersInputState(
             address: "",
-            amount: null,
+            amount: TextValue(text: ""),
             reference: null,
             memo: null,
             message: null,
@@ -20,7 +26,12 @@ class ParametersInputCubit extends Cubit<ParametersInputState> {
   }
 
   void onAmountChange(String amount) {
-    emit(state.copyWith(amount: amount));
+    emit(state.copyWith(
+      amount: TextValue(
+        text: amount,
+        error: amount.isEmpty ? null : _numberValidator.validateAmount(amount),
+      ),
+    ));
   }
 
   void onLabelChange(String label) {

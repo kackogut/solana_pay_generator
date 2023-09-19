@@ -1,8 +1,9 @@
 import 'package:equatable/equatable.dart';
+import 'package:sol_pay_gen/data/base/text_value.dart';
 
 class ParametersInputState extends Equatable {
   final String address;
-  final String? amount;
+  final TextValue amount;
   final String? reference;
   final String? label;
   final String? message;
@@ -31,7 +32,7 @@ class ParametersInputState extends Equatable {
 
   ParametersInputState copyWith({
     String? address,
-    String? amount,
+    TextValue? amount,
     String? label,
     String? message,
     String? reference,

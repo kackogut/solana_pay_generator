@@ -9,11 +9,11 @@ class SolanaPayRequest {
     this.splToken,
   });
 
-  String address;
-  String? label;
-  String? splToken;
-  String? message;
-  String? amount;
-  String? reference;
-  String? memo;
+  final String address;
+  final String? label;
+  final String? splToken;
+  final String? message;
+  final String? amount;
+  final String? reference;
+  final String? memo;
 }

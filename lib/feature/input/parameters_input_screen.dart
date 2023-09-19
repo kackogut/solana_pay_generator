@@ -57,6 +57,7 @@ class InputBody extends StatelessWidget {
                 BaseInput(
                   labelText: 'Amount',
                   keyboardType: TextInputType.number,
+                  error: state.amount.error?.text,
                   onChanged: (address) => context
                       .read<ParametersInputCubit>()
                       .onAmountChange(address),

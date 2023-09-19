@@ -23,7 +23,7 @@ class QrGeneratorCubit extends Cubit<QrGeneratorState> {
       address: inputState.address,
       label: inputState.label,
       message: inputState.message,
-      amount: inputState.amount,
+      amount: inputState.amount?.text,
       reference: inputState.reference,
       memo: inputState.memo,
       splToken: inputState.splTokenAddress,
