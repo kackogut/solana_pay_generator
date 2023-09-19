@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sol_pay_gen/data/transfer/transfer_request_repository.dart';
+import 'package:sol_pay_gen/validator/keys_validator.dart';
 import 'package:sol_pay_gen/validator/number_validator.dart';
 
 MultiRepositoryProvider getRepositoryProviders({
@@ -8,10 +9,13 @@ MultiRepositoryProvider getRepositoryProviders({
   return MultiRepositoryProvider(
     providers: [
       RepositoryProvider<TransferRequestRepository>(
-        create: (context) => DefaultTransferRequestRepository(),
+        create: (_) => DefaultTransferRequestRepository(),
       ),
       RepositoryProvider<NumberValidator>(
-        create: (context) => DefaultNumberValidator(),
+        create: (_) => DefaultNumberValidator(),
+      ),
+      RepositoryProvider<KeysValidator>(
+        create: (_) => DefaultKeysValidator(),
       )
     ],
     child: blocProviders,

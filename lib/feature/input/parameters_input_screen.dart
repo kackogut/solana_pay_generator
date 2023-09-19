@@ -79,6 +79,7 @@ class InputBody extends StatelessWidget {
                 const Padding(padding: EdgeInsets.only(top: 16.0)),
                 BaseInput(
                   labelText: 'Reference',
+                  error: state.reference.error?.text,
                   onChanged: (address) => context
                       .read<ParametersInputCubit>()
                       .onReferenceChange(address),

@@ -16,3 +16,13 @@ class RequiredAmount extends InputError {
   @override
   String text = "Field is required";
 }
+
+class KeyNotBase58Encoded extends InputError {
+  @override
+  String text = "Invalid value, must be base58 encoded";
+}
+
+class KeyLengthInvalid extends InputError {
+  @override
+  String text = "Key value must be between 32 and 44 characters";
+}

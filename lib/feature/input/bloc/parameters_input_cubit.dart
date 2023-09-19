@@ -2,18 +2,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sol_pay_gen/data/base/text_value.dart';
 import 'package:sol_pay_gen/feature/input/bloc/parameters_input_state.dart';
 
+import '../../../data/error/input_error.dart';
+import '../../../validator/keys_validator.dart';
 import '../../../validator/number_validator.dart';
 
 class ParametersInputCubit extends Cubit<ParametersInputState> {
   final NumberValidator _numberValidator;
+  final KeysValidator _keysValidator;
 
   ParametersInputCubit(
     this._numberValidator,
+    this._keysValidator,
   ) : super(
           ParametersInputState(
-            address: TextValue(text: ""),
-            amount: TextValue(text: ""),
-            reference: null,
+            address: TextValue(),
+            amount: TextValue(),
+            reference: TextValue(),
             memo: null,
             message: null,
             label: null,
@@ -22,9 +26,12 @@ class ParametersInputCubit extends Cubit<ParametersInputState> {
         );
 
   void onAddressChange(String address) {
-    emit(
-      state.copyWith(address: TextValue(text: address)),
-    );
+    emit(state.copyWith(
+      address: TextValue(
+        text: address,
+        error: _validateAddress(address),
+      ),
+    ));
   }
 
   void onAmountChange(String amount) {
@@ -45,7 +52,12 @@ class ParametersInputCubit extends Cubit<ParametersInputState> {
   }
 
   void onReferenceChange(String reference) {
-    emit(state.copyWith(reference: reference));
+    emit(state.copyWith(
+      reference: TextValue(
+        text: reference,
+        error: reference.isEmpty ? null : _keysValidator.validateKey(reference),
+      ),
+    ));
   }
 
   void onSplTokenChange(String token) {
@@ -57,6 +69,16 @@ class ParametersInputCubit extends Cubit<ParametersInputState> {
   }
 
   void onValidate() {
-    emit(state.validate());
+    emit(state.copyWith(
+      address: state.address.copyWith(
+        error: _validateAddress(state.address.text),
+      ),
+    ));
+  }
+
+  InputError? _validateAddress(String address) {
+    return address.isEmpty
+        ? RequiredAmount()
+        : _keysValidator.validateKey(address);
   }
 }

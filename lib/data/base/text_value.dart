@@ -2,7 +2,7 @@ import '../error/input_error.dart';
 
 class TextValue {
   TextValue({
-    required this.text,
+    this.text = "",
     this.error,
   });
 

@@ -17,6 +17,7 @@ dependencies:
   equatable: ^2.0.5
   cupertino_icons: ^1.0.2
   pretty_qr_code: ^2.0.3
+  solana: ^0.30.0
 
 dev_dependencies:
   flutter_test:

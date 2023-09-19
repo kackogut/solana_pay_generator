@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sol_pay_gen/domain/generate_transfer_request_qr_use_case.dart';
 import 'package:sol_pay_gen/feature/qr/bloc/qr_generator_cubit.dart';
+import 'package:sol_pay_gen/validator/keys_validator.dart';
 import 'package:sol_pay_gen/validator/number_validator.dart';
 
 import '../data/transfer/transfer_request_repository.dart';
@@ -11,8 +12,10 @@ MultiBlocProvider getBlocProviders({required StatelessWidget child}) {
   return MultiBlocProvider(
     providers: [
       BlocProvider<ParametersInputCubit>(
-        create: (BuildContext context) =>
-            ParametersInputCubit(context.read<NumberValidator>()),
+        create: (BuildContext context) => ParametersInputCubit(
+          context.read<NumberValidator>(),
+          context.read<KeysValidator>(),
+        ),
       ),
       BlocProvider<QrGeneratorCubit>(
         create: (BuildContext context) => QrGeneratorCubit(
