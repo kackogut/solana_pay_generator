@@ -1,8 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:sol_pay_gen/data/base/text_value.dart';
+import 'package:sol_pay_gen/data/error/input_error.dart';
 
 class ParametersInputState extends Equatable {
-  final String address;
+  final TextValue address;
   final TextValue amount;
   final String? reference;
   final String? label;
@@ -31,7 +32,7 @@ class ParametersInputState extends Equatable {
       ];
 
   ParametersInputState copyWith({
-    String? address,
+    TextValue? address,
     TextValue? amount,
     String? label,
     String? message,
@@ -48,4 +49,14 @@ class ParametersInputState extends Equatable {
         memo: memo ?? this.memo,
         splTokenAddress: splTokenAddress ?? this.splTokenAddress,
       );
+
+  ParametersInputState validate() {
+    return copyWith(
+      address: address.copyWith(
+        error: address.text.isEmpty ? RequiredAmount() : null,
+      ),
+    );
+  }
+
+  bool isValid() => amount.isValid() && address.isValid();
 }

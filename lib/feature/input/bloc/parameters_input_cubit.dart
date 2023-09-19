@@ -11,7 +11,7 @@ class ParametersInputCubit extends Cubit<ParametersInputState> {
     this._numberValidator,
   ) : super(
           ParametersInputState(
-            address: "",
+            address: TextValue(text: ""),
             amount: TextValue(text: ""),
             reference: null,
             memo: null,
@@ -22,7 +22,9 @@ class ParametersInputCubit extends Cubit<ParametersInputState> {
         );
 
   void onAddressChange(String address) {
-    emit(state.copyWith(address: address));
+    emit(
+      state.copyWith(address: TextValue(text: address)),
+    );
   }
 
   void onAmountChange(String amount) {
@@ -52,5 +54,9 @@ class ParametersInputCubit extends Cubit<ParametersInputState> {
 
   void onMemoChange(String memo) {
     emit(state.copyWith(memo: memo));
+  }
+
+  void onValidate() {
+    emit(state.validate());
   }
 }

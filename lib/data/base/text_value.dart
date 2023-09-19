@@ -8,4 +8,15 @@ class TextValue {
 
   final String text;
   final InputError? error;
+
+  TextValue copyWith({
+    String? text,
+    InputError? error,
+  }) =>
+      TextValue(
+        text: text ?? this.text,
+        error: error ?? this.error,
+      );
+
+  bool isValid() => error == null;
 }
