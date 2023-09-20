@@ -16,8 +16,8 @@ class ParametersInputScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
-      title: const Text("Solana Pay QR Generator"),
-    ),
+      title: Text(S.generatorInputTitle.tr()),
+        ),
     body: BlocListener<QrGeneratorCubit, QrGeneratorState>(
       listener: (context, state) {
         switch (state) {

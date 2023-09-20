@@ -1,4 +1,8 @@
 class S {
+  // Titles
+  static const generatorInputTitle = 'generator_input_title';
+  static const qrCodeDialogTitle = 'qr_code_dialog_title';
+
   // Input labels
   static const addressLabel = 'address_label';
   static const amountLabel = 'amount_label';

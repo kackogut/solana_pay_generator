@@ -27,7 +27,7 @@ class SolanaPayGeneratorApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Solana Pay QR Generator',
+      title: "SolPay QR",
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,

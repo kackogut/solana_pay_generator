@@ -1,4 +1,6 @@
 {
+  "generator_input_title": "Solana Pay QR Generator",
+  "qr_code_dialog_title": "QR code",
   "address_label": "Receive wallet address",
   "amount_label": "Amount",
   "label_label": "Label",
