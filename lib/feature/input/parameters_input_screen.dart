@@ -107,19 +107,19 @@ class InputBody extends StatelessWidget {
         padding: const EdgeInsets.all(24.0),
         child: MaterialButton(
           onPressed: () {
-            context.read<ParametersInputCubit>().onValidate();
-            context.read<QrGeneratorCubit>().onGenerate();
-          },
-          color: Colors.blueAccent,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16.0),
-          ),
-          height: 56.0,
-          child: const Text(
-            "Let's go",
-            style: TextStyle(color: Colors.white),
-          ),
-        ),
+                context.read<ParametersInputCubit>().onValidate();
+                context.read<QrGeneratorCubit>().onGenerate();
+              },
+              color: Colors.blueAccent,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16.0),
+              ),
+              height: 56.0,
+              child: Text(
+                S.generateQrButtonText.tr(),
+                style: const TextStyle(color: Colors.white),
+              ),
+            ),
       )
     ],
   );

@@ -7,4 +7,7 @@ class S {
   static const referenceLabel = 'reference_label';
   static const memoLabel = 'memo_label';
   static const splTokenLabel = 'spl_token_label';
+
+  // Buttons
+  static const generateQrButtonText = 'generate_qr_button_text';
 }
