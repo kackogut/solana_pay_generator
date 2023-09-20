@@ -78,7 +78,7 @@ class ParametersInputCubit extends Cubit<ParametersInputState> {
 
   InputError? _validateAddress(String address) {
     return address.isEmpty
-        ? RequiredAmount()
+        ? FieldRequired()
         : _keysValidator.validateKey(address);
   }
 }
