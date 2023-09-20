@@ -1,0 +1,9 @@
+{
+  "address_label": "Receive wallet address",
+  "amount_label": "Amount",
+  "label_label": "Label",
+  "message_label": "Message",
+  "reference_label": "Reference",
+  "memo_label": "Memo",
+  "spl_token_label": "Solana Token"
+}
