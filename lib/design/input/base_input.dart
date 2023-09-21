@@ -6,6 +6,7 @@ class BaseInput extends StatelessWidget {
   final TextInputType? _keyboardType;
   final bool _focusable;
   final String? _error;
+  final GestureTapCallback? _onTap;
 
   const BaseInput({
     super.key,
@@ -14,11 +15,13 @@ class BaseInput extends StatelessWidget {
     keyboardType,
     focusable,
     error,
+    onTap,
   })  : _labelText = labelText,
         _onChanged = onChanged,
         _keyboardType = keyboardType,
         _focusable = focusable ?? true,
-        _error = error;
+        _error = error,
+        _onTap = onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +33,7 @@ class BaseInput extends StatelessWidget {
       onChanged: _onChanged,
       keyboardType: _keyboardType,
       focusNode: _focusable ? null : AlwaysDisabledFocusNode(),
+      onTap: _onTap,
     );
   }
 }
