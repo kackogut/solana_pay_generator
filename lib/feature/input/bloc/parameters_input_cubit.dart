@@ -1,18 +1,18 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sol_pay_gen/data/base/text_value.dart';
+import 'package:sol_pay_gen/domain/token/spl_token_data.dart';
 import 'package:sol_pay_gen/feature/input/bloc/parameters_input_state.dart';
 
 import '../../../data/error/input_error.dart';
 import '../../../validator/keys_validator.dart';
 import '../../../validator/number_validator.dart';
+import '../../token/bloc/tokens_cubit.dart';
 
 class ParametersInputCubit extends Cubit<ParametersInputState> {
-  final NumberValidator _numberValidator;
-  final KeysValidator _keysValidator;
-
   ParametersInputCubit(
     this._numberValidator,
     this._keysValidator,
+    this._tokensCubit,
   ) : super(
           ParametersInputState(
             address: TextValue(),
@@ -21,9 +21,20 @@ class ParametersInputCubit extends Cubit<ParametersInputState> {
             memo: null,
             message: null,
             label: null,
-            splTokenAddress: null,
+            selectedToken: null,
           ),
-        );
+        ) {
+    final selectedToken = _tokensCubit.state.tokens.first;
+    _selectedToken = selectedToken;
+
+    emit(state.copyWith(tokenSymbol: selectedToken));
+  }
+
+  final NumberValidator _numberValidator;
+  final KeysValidator _keysValidator;
+  final TokensCubit _tokensCubit;
+
+  SplTokenData? _selectedToken = null;
 
   void onAddressChange(String address) {
     emit(state.copyWith(
@@ -58,10 +69,6 @@ class ParametersInputCubit extends Cubit<ParametersInputState> {
         error: reference.isEmpty ? null : _keysValidator.validateKey(reference),
       ),
     ));
-  }
-
-  void onSplTokenChange(String token) {
-    emit(state.copyWith(splTokenAddress: token));
   }
 
   void onMemoChange(String memo) {

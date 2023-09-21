@@ -7,25 +7,28 @@ class BaseInput extends StatelessWidget {
   final bool _focusable;
   final String? _error;
   final GestureTapCallback? _onTap;
+  final String? _initialValue;
 
-  const BaseInput({
-    super.key,
-    required labelText,
-    required onChanged,
-    keyboardType,
-    focusable,
-    error,
-    onTap,
-  })  : _labelText = labelText,
+  const BaseInput(
+      {super.key,
+      required labelText,
+      required onChanged,
+      keyboardType,
+      focusable,
+      error,
+      onTap,
+      initialValue})
+      : _labelText = labelText,
         _onChanged = onChanged,
         _keyboardType = keyboardType,
         _focusable = focusable ?? true,
         _error = error,
-        _onTap = onTap;
+        _onTap = onTap,
+        _initialValue = initialValue;
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       decoration: InputDecoration(
           border: const OutlineInputBorder(),
           labelText: _labelText,
@@ -34,6 +37,7 @@ class BaseInput extends StatelessWidget {
       keyboardType: _keyboardType,
       focusNode: _focusable ? null : AlwaysDisabledFocusNode(),
       onTap: _onTap,
+      initialValue: _initialValue,
     );
   }
 }

@@ -4,12 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sol_pay_gen/feature/input/bloc/parameters_input_cubit.dart';
 import 'package:sol_pay_gen/feature/qr/bloc/qr_generator_cubit.dart';
 import 'package:sol_pay_gen/feature/qr/bloc/qr_generator_state.dart';
+import 'package:sol_pay_gen/feature/token/bloc/tokens_cubit.dart';
 
 import '../../design/input/base_input.dart';
-import '../../design/picker/spl_token_picker.dart';
 import '../../util/strings.dart';
 import '../qr/qr_code_dialog.dart';
 import 'bloc/parameters_input_state.dart';
+import 'components/selected_token_row.dart';
 
 class ParametersInputScreen extends StatelessWidget {
   const ParametersInputScreen({super.key});
@@ -94,12 +95,10 @@ class InputBody extends StatelessWidget {
                       context.read<ParametersInputCubit>().onMemoChange(memo),
                 ),
                 const Padding(padding: EdgeInsets.only(top: 16.0)),
-                BaseInput(
-                  labelText: S.splTokenLabel.tr(),
-                  onChanged: null,
-                  focusable: false,
-                  onTap: () => showSplTokenBottomSheet(context),
-                ),
+                if (state.selectedToken != null)
+                  SelectedTokenRow(
+                    splTokenData: state.selectedToken!,
+                  )
               ],
             ),
           ),
@@ -108,6 +107,7 @@ class InputBody extends StatelessWidget {
             padding: const EdgeInsets.all(24.0),
             child: MaterialButton(
               onPressed: () {
+                context.read<TokensCubit>().state.tokens;
                 context.read<ParametersInputCubit>().onValidate();
                 context.read<QrGeneratorCubit>().onGenerate();
               },

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:sol_pay_gen/data/token/spl_tokens.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sol_pay_gen/domain/token/spl_token_data.dart';
+import 'package:sol_pay_gen/feature/token/bloc/tokens_cubit.dart';
 
 void showSplTokenBottomSheet(BuildContext context) {
+  final tokens = context.read<TokensCubit>().state.tokens;
+
   showDialog(
       context: context,
       builder: (_) => Dialog(
@@ -9,37 +13,45 @@ void showSplTokenBottomSheet(BuildContext context) {
             child: Container(
               padding: const EdgeInsets.all(32.0),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15), color: Colors.white),
+                borderRadius: BorderRadius.circular(16.0),
+                color: Colors.white,
+              ),
               height: MediaQuery.of(context).size.height / 2,
               width: MediaQuery.of(context).size.width / 2,
               child: SafeArea(
                 top: false,
-                child: SplTokenPicker(),
+                child: _SplTokenPicker(
+                  tokens: tokens,
+                ),
               ),
             ),
           ));
 }
 
-class SplTokenPicker extends StatelessWidget {
+class _SplTokenPicker extends StatelessWidget {
+  const _SplTokenPicker({super.key, required this.tokens});
+
+  final List<SplTokenData> tokens;
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: supportedTokens.length,
+        itemCount: tokens.length,
         itemBuilder: (_, index) {
-          return SplTokenPickerListItem(supportedTokens[index]);
+          return _SplTokenPickerListItem(tokens[index]);
         });
   }
 }
 
-class SplTokenPickerListItem extends StatelessWidget {
-  final SplToken _splToken;
+class _SplTokenPickerListItem extends StatelessWidget {
+  final SplTokenData _splToken;
 
-  const SplTokenPickerListItem(this._splToken, {super.key});
+  const _SplTokenPickerListItem(this._splToken, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.only(bottom: 16),
       child: Row(
         children: [
           Image.network(
