@@ -1,5 +1,5 @@
-class SplTokenData {
-  SplTokenData({
+class TokenData {
+  TokenData({
     required this.id,
     required this.imageUrl,
     required this.symbol,

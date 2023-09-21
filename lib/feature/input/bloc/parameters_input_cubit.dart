@@ -24,17 +24,12 @@ class ParametersInputCubit extends Cubit<ParametersInputState> {
             selectedToken: null,
           ),
         ) {
-    final selectedToken = _tokensCubit.state.tokens.first;
-    _selectedToken = selectedToken;
-
-    emit(state.copyWith(tokenSymbol: selectedToken));
+    emit(state.copyWith(token: _tokensCubit.state.tokens.firstOrNull));
   }
 
   final NumberValidator _numberValidator;
   final KeysValidator _keysValidator;
   final TokensCubit _tokensCubit;
-
-  SplTokenData? _selectedToken = null;
 
   void onAddressChange(String address) {
     emit(state.copyWith(
@@ -73,6 +68,10 @@ class ParametersInputCubit extends Cubit<ParametersInputState> {
 
   void onMemoChange(String memo) {
     emit(state.copyWith(memo: memo));
+  }
+
+  void onSelectedTokenChange(TokenData tokenData) {
+    emit(state.copyWith(token: tokenData));
   }
 
   void onValidate() {

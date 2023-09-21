@@ -28,7 +28,7 @@ class QrGeneratorCubit extends Cubit<QrGeneratorState> {
         amount: inputState.amount.text,
         reference: inputState.reference.text,
         memo: inputState.memo,
-        splToken: inputState.selectedToken?.address,
+        token: inputState.selectedToken?.address,
       );
 
       String qrCode = _generateTransferRequestQrUseCase.execute(request);

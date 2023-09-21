@@ -9,7 +9,7 @@ class ParametersInputState extends Equatable {
   final String? label;
   final String? message;
   final String? memo;
-  final SplTokenData? selectedToken;
+  final TokenData? selectedToken;
 
   const ParametersInputState({
     required this.address,
@@ -39,7 +39,7 @@ class ParametersInputState extends Equatable {
     String? message,
     TextValue? reference,
     String? memo,
-    SplTokenData? tokenSymbol,
+    TokenData? token,
   }) =>
       ParametersInputState(
         address: address ?? this.address,
@@ -48,7 +48,7 @@ class ParametersInputState extends Equatable {
         message: message ?? this.message,
         reference: reference ?? this.reference,
         memo: memo ?? this.memo,
-        selectedToken: tokenSymbol ?? this.selectedToken,
+        selectedToken: token ?? this.selectedToken,
       );
 
   bool isValid() =>

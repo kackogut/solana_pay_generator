@@ -4,11 +4,11 @@ import 'package:sol_pay_gen/feature/token/bloc/tokens_state.dart';
 
 class TokensCubit extends Cubit<TokensState> {
   TokensCubit({
-    required getSplTokensUseCase,
-  })  : _getSplTokensUseCase = getSplTokensUseCase,
+    required getTokensUseCase,
+  })  : _getTokensUseCase = getTokensUseCase,
         super(
-          TokensState(tokens: getSplTokensUseCase.execute()),
+          TokensState(tokens: getTokensUseCase.execute()),
         );
 
-  final GetSplTokensUseCase _getSplTokensUseCase;
+  final GetTokensUseCase _getTokensUseCase;
 }

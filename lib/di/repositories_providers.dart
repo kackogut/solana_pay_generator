@@ -22,8 +22,8 @@ MultiRepositoryProvider getRepositoryProviders({
       ),
       RepositoryProvider<TokensRepository>(
           create: (_) => LocalTokensRepository()),
-      RepositoryProvider<GetSplTokensUseCase>(
-        create: (BuildContext context) => GetSplTokensUseCase(
+      RepositoryProvider<GetTokensUseCase>(
+        create: (BuildContext context) => GetTokensUseCase(
           context.read<TokensRepository>(),
         ),
       ),

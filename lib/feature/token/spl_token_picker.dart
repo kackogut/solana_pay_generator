@@ -3,7 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sol_pay_gen/domain/token/spl_token_data.dart';
 import 'package:sol_pay_gen/feature/token/bloc/tokens_cubit.dart';
 
-void showSplTokenBottomSheet(BuildContext context) {
+import '../../design/token/token_row.dart';
+
+typedef OnTokenSelected = void Function(TokenData);
+
+void showTokenPickerDialog(
+    BuildContext context, OnTokenSelected onTokenSelected) {
   final tokens = context.read<TokensCubit>().state.tokens;
 
   showDialog(
@@ -20,48 +25,55 @@ void showSplTokenBottomSheet(BuildContext context) {
               width: MediaQuery.of(context).size.width / 2,
               child: SafeArea(
                 top: false,
-                child: _SplTokenPicker(
+                child: _TokenPicker(
                   tokens: tokens,
+                  onTokenSelected: onTokenSelected,
                 ),
               ),
             ),
           ));
 }
 
-class _SplTokenPicker extends StatelessWidget {
-  const _SplTokenPicker({super.key, required this.tokens});
+class _TokenPicker extends StatelessWidget {
+  const _TokenPicker(
+      {super.key, required this.tokens, required this.onTokenSelected});
 
-  final List<SplTokenData> tokens;
+  final OnTokenSelected onTokenSelected;
+  final List<TokenData> tokens;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
         itemCount: tokens.length,
         itemBuilder: (_, index) {
-          return _SplTokenPickerListItem(tokens[index]);
+          return _TokenPickerListItem(
+            token: tokens[index],
+            onTokenSelected: onTokenSelected,
+          );
         });
   }
 }
 
-class _SplTokenPickerListItem extends StatelessWidget {
-  final SplTokenData _splToken;
+class _TokenPickerListItem extends StatelessWidget {
+  final TokenData token;
+  final OnTokenSelected onTokenSelected;
 
-  const _SplTokenPickerListItem(this._splToken, {super.key});
+  const _TokenPickerListItem(
+      {required this.token, required this.onTokenSelected, super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
-      child: Row(
-        children: [
-          Image.network(
-            _splToken.imageUrl,
-            width: 32,
-            height: 32,
-          ),
-          const Padding(padding: EdgeInsets.all(8)),
-          Text(_splToken.symbol),
-        ],
+      child: GestureDetector(
+        onTap: () {
+          onTokenSelected(token);
+          Navigator.pop(context);
+        },
+        child: TokenPickerListItem(
+          imageUrl: token.imageUrl,
+          symbol: token.symbol,
+        ),
       ),
     );
   }

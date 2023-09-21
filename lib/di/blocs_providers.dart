@@ -14,8 +14,8 @@ MultiBlocProvider getBlocProviders({required StatelessWidget child}) {
   return MultiBlocProvider(
     providers: [
       BlocProvider<TokensCubit>(
-        create: (BuildContext context) => TokensCubit(
-            getSplTokensUseCase: context.read<GetSplTokensUseCase>()),
+        create: (BuildContext context) =>
+            TokensCubit(getTokensUseCase: context.read<GetTokensUseCase>()),
       ),
       BlocProvider<ParametersInputCubit>(
         create: (BuildContext context) => ParametersInputCubit(

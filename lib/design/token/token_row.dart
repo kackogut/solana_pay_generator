@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 
-class SplTokenPickerListItem extends StatelessWidget {
+class TokenPickerListItem extends StatelessWidget {
   final String _imageUrl;
   final String _symbol;
 
-  const SplTokenPickerListItem({super.key, required imageUrl, required symbol})
+  const TokenPickerListItem({super.key, required imageUrl, required symbol})
       : _imageUrl = imageUrl,
         _symbol = symbol;
 

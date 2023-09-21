@@ -6,12 +6,12 @@ class SolanaPayRequest {
     this.amount,
     this.reference,
     this.memo,
-    this.splToken,
+    this.token,
   });
 
   final String address;
   final String? label;
-  final String? splToken;
+  final String? token;
   final String? message;
   final String? amount;
   final String? reference;

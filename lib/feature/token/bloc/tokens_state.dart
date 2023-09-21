@@ -8,5 +8,5 @@ class TokensState extends Equatable {
   @override
   List<Object?> get props => [tokens];
 
-  final List<SplTokenData> tokens;
+  final List<TokenData> tokens;
 }

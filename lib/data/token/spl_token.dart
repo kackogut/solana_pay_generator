@@ -1,5 +1,5 @@
-class SplTokenResponse {
-  SplTokenResponse({
+class TokenResponse {
+  TokenResponse({
     required this.id,
     required this.imageUrl,
     required this.symbol,

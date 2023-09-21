@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sol_pay_gen/feature/input/bloc/parameters_input_cubit.dart';
 import 'package:sol_pay_gen/feature/qr/bloc/qr_generator_cubit.dart';
 import 'package:sol_pay_gen/feature/qr/bloc/qr_generator_state.dart';
-import 'package:sol_pay_gen/feature/token/bloc/tokens_cubit.dart';
 
 import '../../design/input/base_input.dart';
 import '../../util/strings.dart';
@@ -43,7 +42,6 @@ class InputBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Column(
-        mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Padding(
@@ -97,7 +95,7 @@ class InputBody extends StatelessWidget {
                 const Padding(padding: EdgeInsets.only(top: 16.0)),
                 if (state.selectedToken != null)
                   SelectedTokenRow(
-                    splTokenData: state.selectedToken!,
+                    tokenData: state.selectedToken!,
                   )
               ],
             ),
@@ -107,7 +105,6 @@ class InputBody extends StatelessWidget {
             padding: const EdgeInsets.all(24.0),
             child: MaterialButton(
               onPressed: () {
-                context.read<TokensCubit>().state.tokens;
                 context.read<ParametersInputCubit>().onValidate();
                 context.read<QrGeneratorCubit>().onGenerate();
               },
