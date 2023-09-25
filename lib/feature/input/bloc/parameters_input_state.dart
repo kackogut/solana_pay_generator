@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:sol_pay_gen/data/base/text_value.dart';
-import 'package:sol_pay_gen/domain/token/spl_token_data.dart';
+import 'package:sol_pay_gen/domain/token/token_data.dart';
 
 import '../../token/model/selectable_token_display.dart';
 
@@ -47,14 +47,15 @@ class ParametersInputState extends Equatable {
     List<SelectableTokenDisplay>? selectableTokens,
   }) =>
       ParametersInputState(
-          address: address ?? this.address,
-          amount: amount ?? this.amount,
-          label: label ?? this.label,
-          message: message ?? this.message,
-          reference: reference ?? this.reference,
-          memo: memo ?? this.memo,
-          selectedToken: selectedToken ?? this.selectedToken,
-          selectableTokens: selectableTokens ?? this.selectableTokens);
+        address: address ?? this.address,
+        amount: amount ?? this.amount,
+        label: label ?? this.label,
+        message: message ?? this.message,
+        reference: reference ?? this.reference,
+        memo: memo ?? this.memo,
+        selectedToken: selectedToken ?? this.selectedToken,
+        selectableTokens: selectableTokens ?? this.selectableTokens,
+      );
 
   bool isValid() =>
       amount.isValid() && address.isValid() && reference.isValid();

@@ -1,5 +1,5 @@
-import 'package:sol_pay_gen/data/token/spl_token.dart';
-import 'package:sol_pay_gen/domain/token/spl_token_data.dart';
+import 'package:sol_pay_gen/data/token/token.dart';
+import 'package:sol_pay_gen/domain/token/token_data.dart';
 
 extension TokenMapper on TokenResponse {
   TokenData toDomainModel() {

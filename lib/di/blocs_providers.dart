@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sol_pay_gen/domain/token/get_spl_tokens_use_case.dart';
+import 'package:sol_pay_gen/domain/token/get_tokens_use_case.dart';
 import 'package:sol_pay_gen/domain/transfer/generate_transfer_request_qr_use_case.dart';
 import 'package:sol_pay_gen/feature/qr/bloc/qr_generator_cubit.dart';
 import 'package:sol_pay_gen/feature/token/bloc/tokens_cubit.dart';

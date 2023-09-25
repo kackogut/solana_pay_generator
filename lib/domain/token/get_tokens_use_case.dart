@@ -1,6 +1,6 @@
 import 'package:sol_pay_gen/data/token/tokens_repository.dart';
-import 'package:sol_pay_gen/domain/token/spl_token_data.dart';
-import 'package:sol_pay_gen/domain/token/spl_token_mapper.dart';
+import 'package:sol_pay_gen/domain/token/token_data.dart';
+import 'package:sol_pay_gen/domain/token/token_mapper.dart';
 
 class GetTokensUseCase {
   GetTokensUseCase(this._tokensRepository);

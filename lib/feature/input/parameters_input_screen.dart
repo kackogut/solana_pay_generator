@@ -6,6 +6,8 @@ import 'package:sol_pay_gen/feature/qr/bloc/qr_generator_cubit.dart';
 import 'package:sol_pay_gen/feature/qr/bloc/qr_generator_state.dart';
 
 import '../../design/input/base_input.dart';
+import '../../design/sizes.dart';
+import '../../design/spacings.dart';
 import '../../util/strings.dart';
 import '../qr/qr_code_dialog.dart';
 import 'bloc/parameters_input_state.dart';
@@ -45,54 +47,58 @@ class InputBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Padding(
-            padding: const EdgeInsets.all(24.0),
+            padding: const EdgeInsets.all(Spacing.medium_150),
             child: ListView(
               shrinkWrap: true,
               children: [
                 BaseInput(
                   labelText: S.addressLabel.tr(),
                   error: state.address.error?.text,
-                  onChanged: (address) => context
-                      .read<ParametersInputCubit>()
-                      .onAddressChange(address),
+                  onChanged: (address) =>
+                      context
+                          .read<ParametersInputCubit>()
+                          .onAddressChange(address),
                 ),
-                const Padding(padding: EdgeInsets.only(top: 16.0)),
+                const SizedBox(height: Spacing.medium_100),
                 BaseInput(
                   labelText: S.amountLabel.tr(),
                   keyboardType: TextInputType.number,
                   error: state.amount.error?.text,
-                  onChanged: (address) => context
-                      .read<ParametersInputCubit>()
-                      .onAmountChange(address),
+                  onChanged: (address) =>
+                      context
+                          .read<ParametersInputCubit>()
+                          .onAmountChange(address),
                 ),
-                const Padding(padding: EdgeInsets.only(top: 16.0)),
+                const SizedBox(height: Spacing.medium_100),
                 BaseInput(
                   labelText: S.labelLabel.tr(),
                   onChanged: (text) =>
                       context.read<ParametersInputCubit>().onLabelChange(text),
                 ),
-                const Padding(padding: EdgeInsets.only(top: 16.0)),
+                const SizedBox(height: Spacing.medium_100),
                 BaseInput(
                   labelText: S.messageLabel.tr(),
-                  onChanged: (text) => context
-                      .read<ParametersInputCubit>()
-                      .onMessageChange(text),
+                  onChanged: (text) =>
+                      context
+                          .read<ParametersInputCubit>()
+                          .onMessageChange(text),
                 ),
-                const Padding(padding: EdgeInsets.only(top: 16.0)),
+                const SizedBox(height: Spacing.medium_100),
                 BaseInput(
                   labelText: S.referenceLabel.tr(),
                   error: state.reference.error?.text,
-                  onChanged: (address) => context
-                      .read<ParametersInputCubit>()
-                      .onReferenceChange(address),
+                  onChanged: (address) =>
+                      context
+                          .read<ParametersInputCubit>()
+                          .onReferenceChange(address),
                 ),
-                const Padding(padding: EdgeInsets.only(top: 16.0)),
+                const SizedBox(height: Spacing.medium_100),
                 BaseInput(
                   labelText: S.memoLabel.tr(),
                   onChanged: (memo) =>
                       context.read<ParametersInputCubit>().onMemoChange(memo),
                 ),
-                const Padding(padding: EdgeInsets.only(top: 16.0)),
+                const SizedBox(height: Spacing.medium_100),
                 if (state.selectedToken != null)
                   SelectedTokenRow(
                     tokenData: state.selectedToken!,
@@ -103,7 +109,7 @@ class InputBody extends StatelessWidget {
           ),
           const Spacer(),
           Padding(
-            padding: const EdgeInsets.all(24.0),
+            padding: const EdgeInsets.all(Spacing.medium_150),
             child: MaterialButton(
               onPressed: () {
                 context.read<ParametersInputCubit>().onValidate();
@@ -111,9 +117,9 @@ class InputBody extends StatelessWidget {
               },
               color: Colors.blueAccent,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16.0),
+                borderRadius: BorderRadius.circular(Spacing.medium_100),
               ),
-              height: 56.0,
+              height: Sizes.actionButtonSize,
               child: Text(
                 S.generateQrButtonText.tr(),
                 style: const TextStyle(color: Colors.white),

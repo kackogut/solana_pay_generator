@@ -24,9 +24,10 @@ class BaseInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       decoration: InputDecoration(
-          border: const OutlineInputBorder(),
-          labelText: _labelText,
-          errorText: _error),
+        border: const OutlineInputBorder(),
+        labelText: _labelText,
+        errorText: _error,
+      ),
       onChanged: _onChanged,
       keyboardType: _keyboardType,
     );

@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:sol_pay_gen/design/spacings.dart';
 
 import '../../design/token/token_row.dart';
 import '../../util/strings.dart';
@@ -17,9 +18,9 @@ void showTokenPickerDialog({
       builder: (_) => Dialog(
             backgroundColor: Colors.transparent,
             child: Container(
-              padding: const EdgeInsets.all(32.0),
+              padding: const EdgeInsets.all(Spacing.large_100),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16.0),
+                borderRadius: BorderRadius.circular(Spacing.medium_100),
                 color: Colors.white,
               ),
               height: MediaQuery.of(context).size.height / 2,
@@ -49,7 +50,7 @@ class _TokenPicker extends StatelessWidget {
     return Column(
       children: [
         Text(S.tokenPickerTitle.tr()),
-        const SizedBox(height: 8),
+        const SizedBox(height: Spacing.small_100),
         Expanded(
           child: ListView.separated(
             itemCount: tokens.length,
@@ -60,7 +61,7 @@ class _TokenPicker extends StatelessWidget {
               );
             },
             separatorBuilder: (BuildContext context, int index) {
-              return const SizedBox(height: 8);
+              return const SizedBox(height: Spacing.small_100);
             },
           ),
         ),
@@ -87,10 +88,16 @@ class _TokenPickerListItem extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-            color: token.selected ? Colors.blue : null,
-            border: token.selected ? null : Border.all(color: Colors.blueGrey),
-            borderRadius: const BorderRadius.all(Radius.circular(16))),
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          color: token.selected ? Colors.blue : null,
+          border: token.selected ? null : Border.all(color: Colors.blueGrey),
+          borderRadius: const BorderRadius.all(
+            Radius.circular(Spacing.medium_100),
+          ),
+        ),
+        padding: const EdgeInsets.symmetric(
+          horizontal: Spacing.medium_100,
+          vertical: Spacing.small_50,
+        ),
         child: TokenPickerListItem(
           imageUrl: token.imageUrl,
           symbol: token.symbol,
