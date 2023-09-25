@@ -19,7 +19,10 @@ class ParametersInputScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text(S.generatorInputTitle.tr()),
+          title: Text(
+            S.generatorInputTitle.tr(),
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
         ),
         body: BlocListener<QrGeneratorCubit, QrGeneratorState>(
           listener: (context, state) {
@@ -54,20 +57,18 @@ class InputBody extends StatelessWidget {
                 BaseInput(
                   labelText: S.addressLabel.tr(),
                   error: state.address.error?.text,
-                  onChanged: (address) =>
-                      context
-                          .read<ParametersInputCubit>()
-                          .onAddressChange(address),
+                  onChanged: (address) => context
+                      .read<ParametersInputCubit>()
+                      .onAddressChange(address),
                 ),
                 const SizedBox(height: Spacing.medium_100),
                 BaseInput(
                   labelText: S.amountLabel.tr(),
                   keyboardType: TextInputType.number,
                   error: state.amount.error?.text,
-                  onChanged: (address) =>
-                      context
-                          .read<ParametersInputCubit>()
-                          .onAmountChange(address),
+                  onChanged: (address) => context
+                      .read<ParametersInputCubit>()
+                      .onAmountChange(address),
                 ),
                 const SizedBox(height: Spacing.medium_100),
                 BaseInput(
@@ -78,19 +79,17 @@ class InputBody extends StatelessWidget {
                 const SizedBox(height: Spacing.medium_100),
                 BaseInput(
                   labelText: S.messageLabel.tr(),
-                  onChanged: (text) =>
-                      context
-                          .read<ParametersInputCubit>()
-                          .onMessageChange(text),
+                  onChanged: (text) => context
+                      .read<ParametersInputCubit>()
+                      .onMessageChange(text),
                 ),
                 const SizedBox(height: Spacing.medium_100),
                 BaseInput(
                   labelText: S.referenceLabel.tr(),
                   error: state.reference.error?.text,
-                  onChanged: (address) =>
-                      context
-                          .read<ParametersInputCubit>()
-                          .onReferenceChange(address),
+                  onChanged: (address) => context
+                      .read<ParametersInputCubit>()
+                      .onReferenceChange(address),
                 ),
                 const SizedBox(height: Spacing.medium_100),
                 BaseInput(
@@ -122,7 +121,9 @@ class InputBody extends StatelessWidget {
               height: Sizes.actionButtonSize,
               child: Text(
                 S.generateQrButtonText.tr(),
-                style: const TextStyle(color: Colors.white),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Colors.white,
+                    ),
               ),
             ),
           )

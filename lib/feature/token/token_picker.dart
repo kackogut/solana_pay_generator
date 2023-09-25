@@ -49,7 +49,10 @@ class _TokenPicker extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(S.tokenPickerTitle.tr()),
+        Text(
+          S.tokenPickerTitle.tr(),
+          style: Theme.of(context).textTheme.titleSmall,
+        ),
         const SizedBox(height: Spacing.small_100),
         Expanded(
           child: ListView.separated(

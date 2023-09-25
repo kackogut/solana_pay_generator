@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:sol_pay_gen/design/theme/app_theme.dart';
 import 'package:sol_pay_gen/di/blocs_providers.dart';
 import 'package:sol_pay_gen/di/repositories_providers.dart';
 
@@ -31,10 +32,7 @@ class SolanaPayGeneratorApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: AppTheme.getThemeData(),
       home: getRepositoryProviders(
         blocProviders: getBlocProviders(
           child: const ParametersInputScreen(),
