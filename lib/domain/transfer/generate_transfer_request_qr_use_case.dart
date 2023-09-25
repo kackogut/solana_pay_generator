@@ -1,4 +1,5 @@
-import 'package:sol_pay_gen/data/solana_pay_request.dart';
+import 'package:sol_pay_gen/domain/transfer/transfer_request_data.dart';
+import 'package:sol_pay_gen/domain/transfer/transfer_request_mapper.dart';
 
 import '../../data/transfer/transfer_request_repository.dart';
 
@@ -7,7 +8,8 @@ class GenerateTransferRequestQrUseCase {
 
   final TransferRequestRepository _transferRequestRepository;
 
-  String execute(SolanaPayRequest solanaPayRequest) {
-    return _transferRequestRepository.getLink(solanaPayRequest);
+  String execute(TransferRequestData solanaPayRequest) {
+    return _transferRequestRepository
+        .getLink(solanaPayRequest.toRequestModel());
   }
 }

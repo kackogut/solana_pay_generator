@@ -20,7 +20,7 @@ class TokenPickerListItem extends StatelessWidget {
           width: Sizes.iconLarge,
           height: Sizes.iconLarge,
         ),
-        const SizedBox(height: Spacing.small_100),
+        const SizedBox(width: Spacing.small_100),
         Text(_symbol),
       ],
     );

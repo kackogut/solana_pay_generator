@@ -1,5 +1,5 @@
-class SolanaPayRequest {
-  SolanaPayRequest({
+class TransferRequest {
+  TransferRequest({
     required this.address,
     this.label,
     this.message,

@@ -1,8 +1,9 @@
+import 'package:sol_pay_gen/data/transfer/transfer_request.dart';
+
 import '../../util/constants.dart';
-import '../solana_pay_request.dart';
 
 abstract class TransferRequestRepository {
-  String getLink(SolanaPayRequest solanaPayRequest);
+  String getLink(TransferRequest transferRequest);
 }
 
 class DefaultTransferRequestRepository extends TransferRequestRepository {
@@ -14,18 +15,17 @@ class DefaultTransferRequestRepository extends TransferRequestRepository {
   static const _memoQueryParameter = "memo";
 
   @override
-  String getLink(SolanaPayRequest solanaPayRequest) {
-    Map<String, dynamic> queryParameters =
-        _getQueryParameters(solanaPayRequest);
+  String getLink(TransferRequest transferRequest) {
+    Map<String, dynamic> queryParameters = _getQueryParameters(transferRequest);
 
     return Uri(
       scheme: solanaProtocol,
-      path: solanaPayRequest.address,
+      path: transferRequest.address,
       queryParameters: queryParameters,
     ).toString();
   }
 
-  Map<String, dynamic> _getQueryParameters(SolanaPayRequest solanaPayRequest) {
+  Map<String, dynamic> _getQueryParameters(TransferRequest solanaPayRequest) {
     Map<String, dynamic> queryParameters = {};
 
     if (solanaPayRequest.amount?.isNotEmpty == true) {
