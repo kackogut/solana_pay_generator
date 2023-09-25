@@ -1,12 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sol_pay_gen/design/button/base_button.dart';
 import 'package:sol_pay_gen/feature/input/bloc/parameters_input_cubit.dart';
 import 'package:sol_pay_gen/feature/qr/bloc/qr_generator_cubit.dart';
 import 'package:sol_pay_gen/feature/qr/bloc/qr_generator_state.dart';
 
 import '../../design/input/base_input.dart';
-import '../../design/sizes.dart';
 import '../../design/spacings.dart';
 import '../../util/strings.dart';
 import '../qr/qr_code_dialog.dart';
@@ -109,22 +109,12 @@ class InputBody extends StatelessWidget {
           const Spacer(),
           Padding(
             padding: const EdgeInsets.all(Spacing.medium_150),
-            child: MaterialButton(
+            child: BaseButton(
               onPressed: () {
                 context.read<ParametersInputCubit>().onValidate();
                 context.read<QrGeneratorCubit>().onGenerate();
               },
-              color: Colors.blueAccent,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(Spacing.medium_100),
-              ),
-              height: Sizes.actionButtonSize,
-              child: Text(
-                S.generateQrButtonText.tr(),
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Colors.white,
-                    ),
-              ),
+              text: S.generateQrButtonText.tr(),
             ),
           )
         ],
