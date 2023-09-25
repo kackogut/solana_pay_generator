@@ -21,7 +21,7 @@ void showTokenPickerDialog({
               padding: const EdgeInsets.all(Spacing.large_100),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(Spacing.medium_100),
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.surface,
               ),
               height: MediaQuery.of(context).size.height / 2,
               width: MediaQuery.of(context).size.width / 2,

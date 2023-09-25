@@ -33,6 +33,7 @@ class SolanaPayGeneratorApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       theme: AppTheme.getThemeData(),
+      darkTheme: AppTheme.getDarkThemeData(),
       home: getRepositoryProviders(
         blocProviders: getBlocProviders(
           child: const ParametersInputScreen(),
