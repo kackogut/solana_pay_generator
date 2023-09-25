@@ -3,7 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 
 import '../../util/strings.dart';
 
-abstract class InputError {
+sealed class InputError {
   abstract String text;
 }
 

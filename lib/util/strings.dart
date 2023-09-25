@@ -2,6 +2,7 @@ class S {
   // Titles
   static const generatorInputTitle = 'generator_input_title';
   static const qrCodeDialogTitle = 'qr_code_dialog_title';
+  static const tokenPickerTitle = 'token_picker_title';
 
   // Input labels
   static const addressLabel = 'address_label';
