@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 
+import '../../design/spacings.dart';
 import '../../util/strings.dart';
 
 Future<void> qrCodeDialogBuilder(BuildContext context, String qrCodeData) {
@@ -24,7 +25,7 @@ class _QrCode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(24),
+      padding: const EdgeInsets.all(Spacing.medium_150),
       child: PrettyQr(
         // image: AssetImage('images/twitter.png'),
         size: 200,
