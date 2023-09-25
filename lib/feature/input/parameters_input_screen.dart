@@ -6,6 +6,7 @@ import 'package:sol_pay_gen/feature/qr/bloc/qr_generator_cubit.dart';
 import 'package:sol_pay_gen/feature/qr/bloc/qr_generator_state.dart';
 
 import '../../design/input/base_input.dart';
+import '../../design/sizes.dart';
 import '../../design/spacings.dart';
 import '../../util/strings.dart';
 import '../qr/qr_code_dialog.dart';
@@ -118,7 +119,7 @@ class InputBody extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(Spacing.medium_100),
               ),
-              height: 56.0,
+              height: Sizes.actionButtonSize,
               child: Text(
                 S.generateQrButtonText.tr(),
                 style: const TextStyle(color: Colors.white),

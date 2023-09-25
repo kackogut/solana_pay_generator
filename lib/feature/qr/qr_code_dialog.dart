@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 
+import '../../design/sizes.dart';
 import '../../design/spacings.dart';
 import '../../util/strings.dart';
 
@@ -27,8 +28,7 @@ class _QrCode extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(Spacing.medium_150),
       child: PrettyQr(
-        // image: AssetImage('images/twitter.png'),
-        size: 200,
+        size: Sizes.qrCodeSize,
         data: _data,
         errorCorrectLevel: QrErrorCorrectLevel.M,
         roundEdges: true,

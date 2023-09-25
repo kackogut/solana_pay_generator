@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
+import '../sizes.dart';
 import '../spacings.dart';
 
 class TokenPickerListItem extends StatelessWidget {
@@ -16,8 +17,8 @@ class TokenPickerListItem extends StatelessWidget {
       children: [
         Image.network(
           _imageUrl,
-          width: 32,
-          height: 32,
+          width: Sizes.iconLarge,
+          height: Sizes.iconLarge,
         ),
         const SizedBox(height: Spacing.small_100),
         Text(_symbol),

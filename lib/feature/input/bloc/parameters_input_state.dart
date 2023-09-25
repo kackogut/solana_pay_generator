@@ -47,14 +47,15 @@ class ParametersInputState extends Equatable {
     List<SelectableTokenDisplay>? selectableTokens,
   }) =>
       ParametersInputState(
-          address: address ?? this.address,
-          amount: amount ?? this.amount,
-          label: label ?? this.label,
-          message: message ?? this.message,
-          reference: reference ?? this.reference,
-          memo: memo ?? this.memo,
-          selectedToken: selectedToken ?? this.selectedToken,
-          selectableTokens: selectableTokens ?? this.selectableTokens);
+        address: address ?? this.address,
+        amount: amount ?? this.amount,
+        label: label ?? this.label,
+        message: message ?? this.message,
+        reference: reference ?? this.reference,
+        memo: memo ?? this.memo,
+        selectedToken: selectedToken ?? this.selectedToken,
+        selectableTokens: selectableTokens ?? this.selectableTokens,
+      );
 
   bool isValid() =>
       amount.isValid() && address.isValid() && reference.isValid();
