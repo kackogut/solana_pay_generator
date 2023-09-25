@@ -4,27 +4,21 @@ class BaseInput extends StatelessWidget {
   final String _labelText;
   final ValueChanged<String>? _onChanged;
   final TextInputType? _keyboardType;
-  final bool _focusable;
   final String? _error;
-  final GestureTapCallback? _onTap;
-  final String? _initialValue;
 
-  const BaseInput(
-      {super.key,
-      required labelText,
-      required onChanged,
-      keyboardType,
-      focusable,
-      error,
-      onTap,
-      initialValue})
-      : _labelText = labelText,
+  const BaseInput({
+    super.key,
+    required labelText,
+    required onChanged,
+    keyboardType,
+    focusable,
+    error,
+    onTap,
+    initialValue,
+  })  : _labelText = labelText,
         _onChanged = onChanged,
         _keyboardType = keyboardType,
-        _focusable = focusable ?? true,
-        _error = error,
-        _onTap = onTap,
-        _initialValue = initialValue;
+        _error = error;
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +29,6 @@ class BaseInput extends StatelessWidget {
           errorText: _error),
       onChanged: _onChanged,
       keyboardType: _keyboardType,
-      focusNode: _focusable ? null : AlwaysDisabledFocusNode(),
-      onTap: _onTap,
-      initialValue: _initialValue,
     );
   }
 }

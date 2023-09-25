@@ -13,5 +13,6 @@
   "empty_amount_error_label": "Amount must be higher than 0 if present",
   "field_missing_error_label": "Field is required",
   "key_not_base58_encoded_error_label": "Invalid value, must be base58 encoded",
-  "key_length_invalid_error_label": "Key value must be between 32 and 44 characters"
+  "key_length_invalid_error_label": "Key value must be between 32 and 44 characters",
+  "token_picker_title": "Select token"
 }

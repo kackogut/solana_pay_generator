@@ -1,16 +1,17 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sol_pay_gen/domain/token/spl_token_data.dart';
-import 'package:sol_pay_gen/feature/token/bloc/tokens_cubit.dart';
 
 import '../../design/token/token_row.dart';
+import '../../util/strings.dart';
+import 'model/selectable_token_display.dart';
 
-typedef OnTokenSelected = void Function(TokenData);
+typedef OnTokenSelected = void Function(String);
 
-void showTokenPickerDialog(
-    BuildContext context, OnTokenSelected onTokenSelected) {
-  final tokens = context.read<TokensCubit>().state.tokens;
-
+void showTokenPickerDialog({
+  required BuildContext context,
+  required List<SelectableTokenDisplay> tokens,
+  required OnTokenSelected onTokenSelected,
+}) {
   showDialog(
       context: context,
       builder: (_) => Dialog(
@@ -35,41 +36,61 @@ void showTokenPickerDialog(
 }
 
 class _TokenPicker extends StatelessWidget {
-  const _TokenPicker(
-      {super.key, required this.tokens, required this.onTokenSelected});
+  const _TokenPicker({
+    required this.tokens,
+    required this.onTokenSelected,
+  });
 
   final OnTokenSelected onTokenSelected;
-  final List<TokenData> tokens;
+  final List<SelectableTokenDisplay> tokens;
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: tokens.length,
-        itemBuilder: (_, index) {
-          return _TokenPickerListItem(
-            token: tokens[index],
-            onTokenSelected: onTokenSelected,
-          );
-        });
+    return Column(
+      children: [
+        Text(S.tokenPickerTitle.tr()),
+        const SizedBox(height: 8),
+        Expanded(
+          child: ListView.separated(
+            itemCount: tokens.length,
+            itemBuilder: (_, index) {
+              return _TokenPickerListItem(
+                token: tokens[index],
+                onTokenSelected: onTokenSelected,
+              );
+            },
+            separatorBuilder: (BuildContext context, int index) {
+              return const SizedBox(height: 8);
+            },
+          ),
+        ),
+      ],
+    );
   }
 }
 
 class _TokenPickerListItem extends StatelessWidget {
-  final TokenData token;
+  final SelectableTokenDisplay token;
   final OnTokenSelected onTokenSelected;
 
-  const _TokenPickerListItem(
-      {required this.token, required this.onTokenSelected, super.key});
+  const _TokenPickerListItem({
+    required this.token,
+    required this.onTokenSelected,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
-      child: GestureDetector(
-        onTap: () {
-          onTokenSelected(token);
-          Navigator.pop(context);
-        },
+    return GestureDetector(
+      onTap: () {
+        onTokenSelected(token.id);
+        Navigator.pop(context);
+      },
+      child: Container(
+        decoration: BoxDecoration(
+            color: token.selected ? Colors.blue : null,
+            border: token.selected ? null : Border.all(color: Colors.blueGrey),
+            borderRadius: const BorderRadius.all(Radius.circular(16))),
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
         child: TokenPickerListItem(
           imageUrl: token.imageUrl,
           symbol: token.symbol,

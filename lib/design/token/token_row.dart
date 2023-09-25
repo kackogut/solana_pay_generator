@@ -10,19 +10,16 @@ class TokenPickerListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
-      child: Row(
-        children: [
-          Image.network(
-            _imageUrl,
-            width: 32,
-            height: 32,
-          ),
-          const Padding(padding: EdgeInsets.all(8)),
-          Text(_symbol),
-        ],
-      ),
+    return Row(
+      children: [
+        Image.network(
+          _imageUrl,
+          width: 32,
+          height: 32,
+        ),
+        const Padding(padding: EdgeInsets.all(8)),
+        Text(_symbol),
+      ],
     );
   }
 }

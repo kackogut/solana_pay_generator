@@ -96,6 +96,7 @@ class InputBody extends StatelessWidget {
                 if (state.selectedToken != null)
                   SelectedTokenRow(
                     tokenData: state.selectedToken!,
+                    selectableTokens: state.selectableTokens,
                   )
               ],
             ),

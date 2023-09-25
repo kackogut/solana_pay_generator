@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sol_pay_gen/data/base/text_value.dart';
 import 'package:sol_pay_gen/domain/token/spl_token_data.dart';
 import 'package:sol_pay_gen/feature/input/bloc/parameters_input_state.dart';
+import 'package:sol_pay_gen/feature/token/model/selectable_token_display_mapper.dart';
 
 import '../../../data/error/input_error.dart';
 import '../../../validator/keys_validator.dart';
@@ -22,9 +23,10 @@ class ParametersInputCubit extends Cubit<ParametersInputState> {
             message: null,
             label: null,
             selectedToken: null,
+            selectableTokens: List.empty(),
           ),
         ) {
-    emit(state.copyWith(token: _tokensCubit.state.tokens.firstOrNull));
+    onSelectedTokenChange(null);
   }
 
   final NumberValidator _numberValidator;
@@ -70,16 +72,33 @@ class ParametersInputCubit extends Cubit<ParametersInputState> {
     emit(state.copyWith(memo: memo));
   }
 
-  void onSelectedTokenChange(TokenData tokenData) {
-    emit(state.copyWith(token: tokenData));
+  void onSelectedTokenChange(String? tokenId) {
+    List<TokenData> tokens = _tokensCubit.state.tokens;
+    TokenData selectedToken = tokenId != null
+        ? tokens.firstWhere((token) => token.id == tokenId)
+        : tokens.first;
+
+    emit(
+      state.copyWith(
+        selectedToken: selectedToken,
+        selectableTokens: tokens
+            .map(
+              (token) =>
+                  token.toSelectableTokenModel(selectedToken.id == token.id),
+            )
+            .toList(),
+      ),
+    );
   }
 
   void onValidate() {
-    emit(state.copyWith(
-      address: state.address.copyWith(
-        error: _validateAddress(state.address.text),
+    emit(
+      state.copyWith(
+        address: state.address.copyWith(
+          error: _validateAddress(state.address.text),
+        ),
       ),
-    ));
+    );
   }
 
   InputError? _validateAddress(String address) {
