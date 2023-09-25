@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import '../sizes.dart';
 import '../spacings.dart';
@@ -20,8 +20,11 @@ class TokenPickerListItem extends StatelessWidget {
           width: Sizes.iconLarge,
           height: Sizes.iconLarge,
         ),
-        const SizedBox(height: Spacing.small_100),
-        Text(_symbol),
+        const SizedBox(width: Spacing.small_100),
+        Text(
+          _symbol,
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
       ],
     );
   }

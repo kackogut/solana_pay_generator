@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sol_pay_gen/domain/token/token_data.dart';
 import 'package:sol_pay_gen/feature/input/bloc/parameters_input_cubit.dart';
@@ -27,6 +27,7 @@ class SelectedTokenRow extends StatelessWidget {
           Text(
             S.selectedTokenLabel.tr(),
             textAlign: TextAlign.start,
+            style: Theme.of(context).textTheme.titleSmall,
           ),
           const SizedBox(height: Spacing.small_100),
           GestureDetector(
