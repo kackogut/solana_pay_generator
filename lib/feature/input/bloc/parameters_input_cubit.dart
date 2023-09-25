@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sol_pay_gen/data/base/text_value.dart';
-import 'package:sol_pay_gen/domain/token/spl_token_data.dart';
+import 'package:sol_pay_gen/domain/token/token_data.dart';
 import 'package:sol_pay_gen/feature/input/bloc/parameters_input_state.dart';
 import 'package:sol_pay_gen/feature/token/model/selectable_token_display_mapper.dart';
 

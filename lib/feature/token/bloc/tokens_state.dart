@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import '../../../domain/token/spl_token_data.dart';
+import '../../../domain/token/token_data.dart';
 
 class TokensState extends Equatable {
   const TokensState({required this.tokens});

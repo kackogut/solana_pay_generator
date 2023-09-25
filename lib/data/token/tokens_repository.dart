@@ -1,4 +1,4 @@
-import 'spl_token.dart';
+import 'token.dart';
 
 abstract class TokensRepository {
   List<TokenResponse> getTokens();

@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:sol_pay_gen/data/base/text_value.dart';
-import 'package:sol_pay_gen/domain/token/spl_token_data.dart';
+import 'package:sol_pay_gen/domain/token/token_data.dart';
 
 import '../../token/model/selectable_token_display.dart';
 
