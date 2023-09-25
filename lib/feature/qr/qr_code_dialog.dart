@@ -4,6 +4,7 @@ import 'package:pretty_qr_code/pretty_qr_code.dart';
 
 import '../../design/sizes.dart';
 import '../../design/spacings.dart';
+import '../../design/theme/app_colors.dart';
 import '../../util/strings.dart';
 
 Future<void> qrCodeDialogBuilder(BuildContext context, String qrCodeData) {
@@ -32,6 +33,9 @@ class _QrCode extends StatelessWidget {
         data: _data,
         errorCorrectLevel: QrErrorCorrectLevel.M,
         roundEdges: true,
+        elementColor: Theme.of(context).brightness == Brightness.light
+            ? AppColors.black
+            : AppColors.white,
       ),
     );
   }

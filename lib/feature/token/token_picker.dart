@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:sol_pay_gen/design/spacings.dart';
+import 'package:sol_pay_gen/design/theme/app_colors.dart';
+import 'package:sol_pay_gen/design/theme/app_gradients.dart';
 
 import '../../design/token/token_row.dart';
 import '../../util/strings.dart';
@@ -64,7 +66,7 @@ class _TokenPicker extends StatelessWidget {
               );
             },
             separatorBuilder: (BuildContext context, int index) {
-              return const SizedBox(height: Spacing.small_100);
+              return const SizedBox(height: Spacing.medium_100);
             },
           ),
         ),
@@ -91,8 +93,9 @@ class _TokenPickerListItem extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: token.selected ? Colors.blue : null,
-          border: token.selected ? null : Border.all(color: Colors.blueGrey),
+          gradient: token.selected ? AppGradients.solanaGradient : null,
+          border:
+              token.selected ? null : Border.all(color: AppColors.solanaPurple),
           borderRadius: const BorderRadius.all(
             Radius.circular(Spacing.medium_100),
           ),
