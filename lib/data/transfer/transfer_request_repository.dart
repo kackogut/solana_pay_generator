@@ -6,6 +6,13 @@ abstract class TransferRequestRepository {
 }
 
 class DefaultTransferRequestRepository extends TransferRequestRepository {
+  static const _amountQueryParameter = "amount";
+  static const _tokenAddressQueryParameter = "spl-token";
+  static const _referenceQueryParameter = "reference";
+  static const _labelQueryParameter = "label";
+  static const _messageQueryParameter = "message";
+  static const _memoQueryParameter = "memo";
+
   @override
   String getLink(SolanaPayRequest solanaPayRequest) {
     Map<String, dynamic> queryParameters =
@@ -22,22 +29,22 @@ class DefaultTransferRequestRepository extends TransferRequestRepository {
     Map<String, dynamic> queryParameters = {};
 
     if (solanaPayRequest.amount?.isNotEmpty == true) {
-      queryParameters["amount"] = solanaPayRequest.amount!;
+      queryParameters[_amountQueryParameter] = solanaPayRequest.amount!;
     }
     if (solanaPayRequest.token?.isNotEmpty == true) {
-      queryParameters["spl-token"] = solanaPayRequest.token!;
+      queryParameters[_tokenAddressQueryParameter] = solanaPayRequest.token!;
     }
     if (solanaPayRequest.reference?.isNotEmpty == true) {
-      queryParameters["reference"] = solanaPayRequest.reference;
+      queryParameters[_referenceQueryParameter] = solanaPayRequest.reference;
     }
     if (solanaPayRequest.label?.isNotEmpty == true) {
-      queryParameters["label"] = solanaPayRequest.label;
+      queryParameters[_labelQueryParameter] = solanaPayRequest.label;
     }
     if (solanaPayRequest.message?.isNotEmpty == true) {
-      queryParameters["message"] = solanaPayRequest.message;
+      queryParameters[_messageQueryParameter] = solanaPayRequest.message;
     }
     if (solanaPayRequest.memo?.isNotEmpty == true) {
-      queryParameters["memo"] = solanaPayRequest.memo;
+      queryParameters[_memoQueryParameter] = solanaPayRequest.memo;
     }
 
     return queryParameters;
