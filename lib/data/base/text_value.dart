@@ -1,22 +1,17 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../error/input_error.dart';
 
-class TextValue {
-  TextValue({
-    this.text = "",
-    this.error,
-  });
+part 'text_value.freezed.dart';
 
-  final String text;
-  final InputError? error;
+@freezed
+class TextValue with _$TextValue {
+  const TextValue._();
 
-  TextValue copyWith({
-    String? text,
-    InputError? error,
-  }) =>
-      TextValue(
-        text: text ?? this.text,
-        error: error ?? this.error,
-      );
+  const factory TextValue({
+    @Default("") String text,
+    @Default(null) InputError? error,
+  }) = _TextValue;
 
   bool isValid() => error == null;
 }
