@@ -1,61 +1,25 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sol_pay_gen/data/base/text_value.dart';
 import 'package:sol_pay_gen/domain/token/token_data.dart';
 
 import '../../token/model/selectable_token_display.dart';
 
-class ParametersInputState extends Equatable {
-  final TextValue address;
-  final TextValue amount;
-  final TextValue reference;
-  final String? label;
-  final String? message;
-  final String? memo;
-  final TokenData? selectedToken;
-  final List<SelectableTokenDisplay> selectableTokens;
+part 'parameters_input_state.freezed.dart';
 
-  const ParametersInputState({
-    required this.address,
-    required this.amount,
-    required this.reference,
-    required this.label,
-    required this.message,
-    required this.memo,
-    required this.selectedToken,
-    required this.selectableTokens,
-  });
+@freezed
+class ParametersInputState with _$ParametersInputState {
+  const ParametersInputState._();
 
-  @override
-  List<Object?> get props => [
-        address,
-        amount,
-        reference,
-        label,
-        message,
-        memo,
-        selectedToken,
-      ];
-
-  ParametersInputState copyWith({
-    TextValue? address,
-    TextValue? amount,
-    String? label,
-    String? message,
-    TextValue? reference,
-    String? memo,
-    TokenData? selectedToken,
-    List<SelectableTokenDisplay>? selectableTokens,
-  }) =>
-      ParametersInputState(
-        address: address ?? this.address,
-        amount: amount ?? this.amount,
-        label: label ?? this.label,
-        message: message ?? this.message,
-        reference: reference ?? this.reference,
-        memo: memo ?? this.memo,
-        selectedToken: selectedToken ?? this.selectedToken,
-        selectableTokens: selectableTokens ?? this.selectableTokens,
-      );
+  const factory ParametersInputState({
+    required TextValue address,
+    required TextValue amount,
+    required TextValue reference,
+    required String? label,
+    required String? message,
+    required String? memo,
+    required TokenData? selectedToken,
+    required List<SelectableTokenDisplay> selectableTokens,
+  }) = _ParametersInputState;
 
   bool isValid() =>
       amount.isValid() && address.isValid() && reference.isValid();

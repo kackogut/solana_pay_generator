@@ -1,12 +1,10 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../domain/token/token_data.dart';
 
-class TokensState extends Equatable {
-  const TokensState({required this.tokens});
+part 'tokens_state.freezed.dart';
 
-  @override
-  List<Object?> get props => [tokens];
-
-  final List<TokenData> tokens;
+@freezed
+class TokensState with _$TokensState {
+  const factory TokensState({required List<TokenData> tokens}) = _TokensState;
 }

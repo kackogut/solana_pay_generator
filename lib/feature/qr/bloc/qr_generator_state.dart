@@ -1,17 +1,10 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-sealed class QrGeneratorState extends Equatable {}
+part 'qr_generator_state.freezed.dart';
 
-final class Empty extends QrGeneratorState {
-  @override
-  List<Object?> get props => [];
-}
+@freezed
+sealed class QrGeneratorState with _$QrGeneratorState {
+  factory QrGeneratorState.empty() = Empty;
 
-final class QrCode extends QrGeneratorState {
-  QrCode(this.data);
-
-  final String data;
-
-  @override
-  List<Object?> get props => [data];
+  factory QrGeneratorState.qrCode(String data) = QrCode;
 }

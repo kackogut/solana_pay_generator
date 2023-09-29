@@ -16,9 +16,9 @@ class ParametersInputCubit extends Cubit<ParametersInputState> {
     this._tokensCubit,
   ) : super(
           ParametersInputState(
-            address: TextValue(),
-            amount: TextValue(),
-            reference: TextValue(),
+            address: const TextValue(),
+            amount: const TextValue(),
+            reference: const TextValue(),
             memo: null,
             message: null,
             label: null,

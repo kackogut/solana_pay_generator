@@ -28,12 +28,9 @@ class ParametersInputScreen extends StatelessWidget {
         ),
         body: BlocListener<QrGeneratorCubit, QrGeneratorState>(
           listener: (context, state) {
-            switch (state) {
-              case Empty():
-                {}
-              case QrCode():
-                qrCodeDialogBuilder(context, state.data);
-            }
+            state.when(
+                empty: () {},
+                qrCode: (data) => qrCodeDialogBuilder(context, data));
           },
           child: BlocBuilder<ParametersInputCubit, ParametersInputState>(
             builder: (context, state) => InputBody(state: state),

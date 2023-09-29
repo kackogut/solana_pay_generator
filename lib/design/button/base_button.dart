@@ -5,7 +5,11 @@ import '../sizes.dart';
 import '../theme/app_gradients.dart';
 
 class BaseButton extends StatelessWidget {
-  const BaseButton({super.key, required this.onPressed, required this.text});
+  const BaseButton({
+    super.key,
+    required this.onPressed,
+    required this.text,
+  });
 
   final VoidCallback onPressed;
   final String text;
@@ -29,7 +33,7 @@ class BaseButton extends StatelessWidget {
           child: Text(
             text,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Colors.white,
+              color: Theme.of(context).colorScheme.onPrimary,
                 ),
             textAlign: TextAlign.center,
           ),
