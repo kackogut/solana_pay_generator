@@ -1,6 +1,8 @@
 # Solana Pay QR generator
 
-QR code generator for Solana Pay
+Unofficial QR code generator for Solana Pay based on
+the [official specification](https://github.com/solana-labs/solana-pay/blob/master/SPEC.md),
+you can use any Solana Wallet supporting Solana to scan generated QR codes and transfer funds
 
 ## Installation
 
